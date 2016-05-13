@@ -7,7 +7,7 @@ def list_image(root, recursive, exts):
     image_list = []
     if recursive:
         cat = {}
-        for path, subdirs, files in os.walk(root):
+        for path, subdirs, files in sorted(os.walk(root)):
             print path
             for fname in files:
                 fpath = os.path.join(path, fname)
@@ -65,7 +65,7 @@ def main():
         to images in each folder. Otherwise only include images in the root folder\
         and give them label 0.')
     args = parser.parse_args()
-    
+
     make_list(args.prefix, args.root, args.recursive,
         args.exts, args.chunks, args.train_ratio)
 
